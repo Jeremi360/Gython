@@ -5,7 +5,7 @@ re_empty = r"\s*\n"
 re_any = r"[\s\w\d.]"
 re_name = r"(?P<name>\w+)"
 re_class = r"(?P<class>\w+)"
-re_type = r"(?P<type>:\s*(\w+)?)"
+re_type = r"(?P<value_type>:\s*(\w+)?)"
 re_value = rf"(?P<value>{re_any}+)"
 
 regexes: dict[str, str] = {

@@ -14,6 +14,6 @@ const some_const: int = 5
 """
 regex.compile_regexes()
 parsed_code = parser.parse_code(test_code)
-# print(parsed_code)
+print("parsed_code:", parsed_code)
 compiled_class = exec.create_class(parsed_code, test_code)
-print(compiled_class)
+print("compiled_class:", compiled_class)

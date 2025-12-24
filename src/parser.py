@@ -9,13 +9,13 @@ def parse_line(line: str) -> dict[str, str]:
 
 def parse_code(code: str)-> dict[int, dict[str, str]]:
 	result: dict[int, dict[str, str]] = {}
-	i = 1
+	i = 0
 	for line in code.splitlines():
 		an = parse_line(line)
 		# print(i, an)
 
 		if an == {}:
-			print(f"Syntax error at {i} line:\n\t{line}")
+			print(f"Syntax error at {i + 1} line:\n\t{line}")
 			return {}
 
 		if an["type"] in ["comment", "ignore"]:
