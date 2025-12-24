@@ -7,6 +7,7 @@ re_name = r"(?P<name>\w+)"
 re_class = r"(?P<class>\w+)"
 re_type = r"(?P<value_type>:\s*(\w+)?)"
 re_value = rf"(?P<value>{re_any}+)"
+re_arg = rf"{re_name}\s*{re_type}?(\s*=\s+{re_value})?"
 
 regexes: dict[str, str] = {
 	# \s*\n
@@ -18,13 +19,14 @@ regexes: dict[str, str] = {
 	# extends BaseClass 
 	"extends": rf"extends\s+{re_class}{re_empty}",
 	# var var_name: Type = value
-	"var": rf"var\s+{re_name}\s*{re_type}?\s*=\s+{re_value}{re_empty}",
+	"var": rf"var\s+{re_arg}{re_empty}",
 	# const const_name: Type = value
-	"const": rf"const\s+{re_name}\s*{re_type}?\s*=\s+{re_value}{re_empty}",
+	"const": rf"const\s+{re_arg}{re_empty}",
 	# class ClassName extends BaseClass
 	# class ClassName: BaseClass	
 	# ? class ClassName <- BaseClass
-	"class_extends": rf"class\s+{re_name}(\s*:|\s+extends)\s+{re_class}{re_empty}",
+	"class_extends": rf"class\s+{re_name}(\s*:\s*|\s+extends\s+){re_class}{re_empty}",
+	# func func_name()
 }
 
 compiled: dict[str, Pattern] = {}
